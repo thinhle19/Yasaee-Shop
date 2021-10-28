@@ -238,8 +238,8 @@ public class BookDAO {
         email = userEmail;
         String subject = "Library System Code";
 
-        final String username = "";//your email id
-        final String password = "";// your password
+        final String username = "ltt01092001@gmail.com";//your email id
+        final String password = "Dpccdv19?";// your password
 
         Properties props = new Properties();
         props.put("mail.smtp.auth", true);

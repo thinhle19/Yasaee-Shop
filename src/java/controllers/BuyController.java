@@ -69,7 +69,7 @@ public class BuyController extends HttpServlet {
                             }
                         }
                     }
-
+//ko hard code nữa, sai mail vẫn mua được
                     if (BookDAO.send(cart, userEmail)) {
                         session.setAttribute("CLEAR_CART", "clear cart");
 //                        session.setAttribute("BUY_MESSAGE", "You have order succesfully");
