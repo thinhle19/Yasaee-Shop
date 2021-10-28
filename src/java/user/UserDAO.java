@@ -13,141 +13,42 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import javax.naming.NamingException;
 import utils.DBUtils;
 
 /**
  *
- * @author ASUS
+ * @author letie
  */
 public class UserDAO {
 
-    public UserDTO checkLogin(String userID, String password) throws SQLException {
-        UserDTO user = null;
-        Connection conn = null;
-        PreparedStatement stm = null;
-        ResultSet rs = null;
-        try {
-            conn = DBUtils.getConnection();
-            if (conn != null) {
-                String sql = "SELECT name, roleID ,address ,createDate"
-                        + " FROM tblUsers "
-                        + " WHERE userID =? AND password=? AND status= 'active'";
-                
-                stm = conn.prepareStatement(sql);
-                stm.setString(1, userID);
-                stm.setString(2, password);
-                rs = stm.executeQuery();
-                if (rs.next()) {
-                    String name = rs.getString("name");
-                    String roleID = rs.getString("roleID");
-                    user = new UserDTO(userID, name, "", roleID, "", "", "");
-                }
-            }
-        } catch (Exception e) {
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (stm != null) {
-                stm.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-
-        return user;
-    }
-
-    public List<UserDTO> getListUser(String search) throws SQLException {
-        List<UserDTO> list = new ArrayList<>();
-        Connection conn = null;
-        PreparedStatement stm = null;
-        ResultSet rs = null;
-        try {
-            conn = DBUtils.getConnection();
-            if (conn != null) {
-                String sql = "SELECT userID, name , roleID ,address ,status,createDate"
-                        + " FROM tblUsers "
-                        + " WHERE name like ? ";
-                stm = conn.prepareCall(sql);
-                stm.setString(1, "%" + search + "%");
-                rs = stm.executeQuery();
-                while (rs.next()) {
-                    String userID = rs.getString("userID");
-                    String name = rs.getString("name");
-                    String roleID = rs.getString("roleID");
-                    String password = "****";
-                    String address = rs.getString("address");
-                    String status = rs.getString("status");
-                    String date = rs.getString("createDate");
-
-                    list.add(new UserDTO(userID, name, password, roleID, address, status, date));
-                }
-            }
-        } catch (Exception e) {
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (stm != null) {
-                stm.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-        return list;
-    }
-
-    public boolean deleteUser(String userID) throws SQLException {
-        boolean result = false;
-        Connection conn = null;
-        PreparedStatement stm = null;
-        try {
-            conn = DBUtils.getConnection();
-            if (conn != null) {
-                String sql = "UPDATE tblUsers "
-                        + "SET status=? "
-                        + "WHERE userID=? ";
-                stm = conn.prepareStatement(sql);
-                stm.setString(1, "inactive");
-                stm.setString(2, userID);
-                result = stm.executeUpdate() > 0;
-            }
-        } catch (Exception e) {
-        } finally {
-            if (stm != null) {
-                stm.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-
-        return result;
-    }
-
-    public boolean checkUpdate(UserDTO user) throws SQLException {
-        boolean check = false;
+    public static User checkLogin(String username, String password) throws SQLException {
+        User user = null;
         Connection conn = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                String sql = "UPDATE tblUsers "
-                        + "SET name=? , roleID=? , address=? ,status=? "
-                        + "WHERE userID=? ";
+                String sql = " SELECT * "
+                        + " FROM [user] "
+                        + " WHERE username = ? AND password = ?";
                 ps = conn.prepareStatement(sql);
-                ps.setString(1, user.getName());
-                ps.setString(2, user.getRoleID());
-                ps.setString(3, user.getAddress());
-                ps.setString(4, user.getStatus());
-                ps.setString(5, user.getUserID());
-                check = ps.executeUpdate() > 0;
+                ps.setString(1, username);
+                ps.setString(2, password);
+                rs = ps.executeQuery();
+                if (rs.next()) {
+                    String name = rs.getString("name");
+                    String roleID = rs.getString("role_id");
+                    String id = rs.getString("id");
+                    user = new User(id, roleID, name, "", "", "", username, password, "");
+                }
             }
-        } catch (Exception e) {
+        } catch (SQLException | ClassNotFoundException e) {
         } finally {
+            if (rs != null) {
+                rs.close();
+            }
             if (ps != null) {
                 ps.close();
             }
@@ -155,128 +56,26 @@ public class UserDAO {
                 conn.close();
             }
         }
-
-        return check;
+        return user;
     }
 
-    public boolean checkDuplicate(String userID) throws SQLException {
-        boolean check = false;
+    public static boolean isContainUser(String username) throws SQLException {
         Connection conn = null;
         PreparedStatement stm = null;
         ResultSet rs = null;
+        boolean check = false;
+
         try {
             conn = DBUtils.getConnection();
             if (conn != null) {
-                String sql = "SELECT userID "
-                        + "FROM tblUsers "
-                        + "WHERE userID=? ";
+                String sql = " SELECT id "
+                        + " FROM [user]"
+                        + " WHERE username = ?";
                 stm = conn.prepareStatement(sql);
-                stm.setString(1, userID);
+                stm.setString(1, username);
                 rs = stm.executeQuery();
                 if (rs.next()) {
                     check = true;
-                }
-            }
-        } catch (Exception e) {
-        } finally {
-            if (rs != null) {
-                rs.close();
-            }
-            if (stm != null) {
-                stm.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-
-        return check;
-    }
-
-    public boolean insertUser(UserDTO user) throws SQLException {
-        boolean check = false;
-        Connection conn = null;
-        PreparedStatement stm = null;
-        try {
-            conn = DBUtils.getConnection();
-            if (conn != null) {
-                String sql = "INSERT INTO tblUsers(name,userID,roleID,address,password,status,createDate) "
-                        + "VALUES (?,?,?,?,?,?,?) ";
-                stm = conn.prepareStatement(sql);
-                stm.setString(1, user.getName());
-                stm.setString(2, user.getUserID());
-                stm.setString(3, user.getRoleID());
-                stm.setString(4, user.getAddress());
-                stm.setString(5, user.getPassword());
-                stm.setString(6, user.getStatus());
-                stm.setString(7, user.getDate());
-                check = stm.executeUpdate() > 0;
-            }
-        } catch (Exception e) {
-            e.toString();
-        } finally {
-            if (stm != null) {
-                stm.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-        return check;
-    }
-
-    public boolean insertUserGoogle(GooglePojo user) throws SQLException {
-        boolean check = false;
-        Connection conn = null;
-        PreparedStatement stm = null;
-        Date now = new Date();
-        SimpleDateFormat dt = new SimpleDateFormat("MM/dd/YYYY");
-        try {
-            conn = DBUtils.getConnection();
-            if (conn != null) {
-                String sql = "INSERT INTO tblUsers(name,userID,roleID,address,password,status,createDate) "
-                        + "VALUES (?,?,?,?,?,?,?) ";
-                stm = conn.prepareStatement(sql);
-                stm.setString(1, user.getEmail());
-                stm.setString(2, user.getId());
-                stm.setString(3, "US");
-                stm.setString(4, "");
-                stm.setString(5, "");
-                stm.setString(6, "active");
-                stm.setString(7, dt.format(now));
-                check = stm.executeUpdate() > 0;
-            }
-        } catch (Exception e) {
-            e.toString();
-        } finally {
-            if (stm != null) {
-                stm.close();
-            }
-            if (conn != null) {
-                conn.close();
-            }
-        }
-        return check;
-    }
-
-    public UserDTO checkLoginGoogle(String userID) throws SQLException {
-        UserDTO user = null;
-        Connection conn = null;
-        PreparedStatement stm = null;
-        ResultSet rs = null;
-        try {
-            conn = DBUtils.getConnection();
-            if (conn != null) {
-                String sql = "SELECT roleID ,name,createDate"
-                        + " FROM tblUsers "
-                        + " WHERE userID =? AND status= 'active' ";
-                stm = conn.prepareStatement(sql);
-                stm.setString(1, userID);
-                rs = stm.executeQuery();
-                if (rs.next()) {
-                    String name = rs.getString("name");
-                    String roleID = rs.getString("roleID");
-                    user = new UserDTO(userID, name, "", roleID, "", "", "");
                 }
             }
         } catch (Exception e) {
@@ -292,7 +91,111 @@ public class UserDAO {
                 conn.close();
             }
         }
-
-        return user;
+        return check;
     }
+
+    public static boolean addUser(User user) throws SQLException {
+        boolean check = false;
+        Connection conn = null;
+        PreparedStatement stm = null;
+        try {
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                String sql = "insert into [user]"
+                        + "(id, role_id, [name], email, [address], phone_num, username, [password], avatar_url) "
+                        + " values(?,?,?,?,?,?,?,?,?)";
+                stm = conn.prepareStatement(sql);
+                stm.setString(1, user.getId());
+                stm.setString(2, user.getRoleId());
+                stm.setString(3, user.getName());
+                stm.setString(4, user.getEmail());
+                stm.setString(5, user.getAddress());
+                stm.setString(6, user.getPhoneNum());
+                stm.setString(7, user.getUsername());
+                stm.setString(8, user.getPassword());
+                stm.setString(9, user.getAvatarUrl());
+                check = stm.executeUpdate() > 0;
+            }
+        } catch (Exception e) {
+        } finally {
+            if (stm != null) {
+                stm.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+
+        return check;
+    }
+
+//    public boolean insertUserGoogle(GooglePojo user) throws SQLException {
+//        boolean check = false;
+//        Connection conn = null;
+//        PreparedStatement stm = null;
+//        Date now = new Date();
+//        SimpleDateFormat dt = new SimpleDateFormat("MM/dd/YYYY");
+//        try {
+//            conn = DBUtils.getConnection();
+//            if (conn != null) {
+//                String sql = "INSERT INTO tblUsers(name,userID,roleID,address,password,status,createDate) "
+//                        + "VALUES (?,?,?,?,?,?,?) ";
+//                stm = conn.prepareStatement(sql);
+//                stm.setString(1, user.getEmail());
+//                stm.setString(2, user.getId());
+//                stm.setString(3, "US");
+//                stm.setString(4, "");
+//                stm.setString(5, "");
+//                stm.setString(6, "active");
+//                stm.setString(7, dt.format(now));
+//                check = stm.executeUpdate() > 0;
+//            }
+//        } catch (Exception e) {
+//            e.toString();
+//        } finally {
+//            if (stm != null) {
+//                stm.close();
+//            }
+//            if (conn != null) {
+//                conn.close();
+//            }
+//        }
+//        return check;
+//    }
+//    public UserDTO checkLoginGoogle(String userID) throws SQLException {
+//        UserDTO user = null;
+//        Connection conn = null;
+//        PreparedStatement stm = null;
+//        ResultSet rs = null;
+//        try {
+//            conn = DBUtils.getConnection();
+//            if (conn != null) {
+//                String sql = "SELECT roleID ,name,createDate"
+//                        + " FROM tblUsers "
+//                        + " WHERE userID =? AND status= 'active' ";
+//                stm = conn.prepareStatement(sql);
+//                stm.setString(1, userID);
+//                rs = stm.executeQuery();
+//                if (rs.next()) {
+//                    String name = rs.getString("name");
+//                    String roleID = rs.getString("roleID");
+//                    user = new UserDTO(userID, name, "", roleID, "", "", "");
+//                }
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            if (rs != null) {
+//                rs.close();
+//            }
+//            if (stm != null) {
+//                stm.close();
+//            }
+//            if (conn != null) {
+//                conn.close();
+//            }
+//        }
+//
+//        return user;
+//    }
 }

@@ -4,9 +4,9 @@
     Author     : ASUS
 --%>
 
+<%@page import="user.User"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>
-<%@page import="user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,17 +22,6 @@
 
     </head>
     <body>
-        <%
-            UserDTO loginUser = (UserDTO) session.getAttribute("LOGIN_USER");
-            if (loginUser == null || !"AD".equals(loginUser.getRoleID())) {
-                response.sendRedirect("login.html");
-                return;
-            }
-            String search = (String) request.getParameter("search");
-            if (search == null) {
-                search = "";
-            }
-        %>
         <nav class="navbar navbar-expand-lg navbar-light bg-light"  >
             <a class="navbar-brand" href="#">Library System</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,31 +36,19 @@
 
                 </ul>
                 <form class="form-inline my-2 my-lg-0" action="MainController">
-                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search" value="<%=search%>">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="search" value="search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="action" value="Search">Search</button>
                 </form>
             </div>
         </nav>
-        <br><h2 class="font-italic">Hello Administrator: <%=loginUser.getName()%></h2>
+        <br><h2 class="font-italic">Hello Administrator: Test%></h2>
         <form action="MainController">
             <button type="submit" name="action" value="Logout" class="btn btn-danger">
                 <span class="glyphicon glyphicon-log-out"></span> Log out
             </button>
         </form>
         <br>
-        <%
-            String error_message = (String) request.getAttribute("ERROR_MESSAGE");
-            if (error_message != null) {
-        %>
-        <h1 align="center"> <%=error_message%></h1>
-        <%
-            }
-        %>
-        <%
-            List<UserDTO> list = (List<UserDTO>) request.getAttribute("LIST_USER");
-            if (list != null) {
-                if (!list.isEmpty()) {
-        %>
+        <h1 align="center"> Error</h1>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -88,60 +65,11 @@
                 </tr>
             </thead>
             <tbody>
-                <%
-                    int count = 1;
-                    for (UserDTO user : list) {
-                %> 
             <form action="MainController">
                 <tr>
-                    <td><%= count++%></td>
-                    <td><%= user.getUserID()%></td>
-                    <td><%= user.getName()%></td>
-                    <td><%= user.getRoleID()%></td>
-                    <td>
-                        <%= user.getAddress()%>
-                    </td>
-                    <td>
-                        <%= user.getPassword()%>
-                    </td>
-                    <td>
-                        <%= user.getDate()%>
-                    </td>
-                    <td>
-                        <%= user.getStatus()%>
-                    </td>
-                    <!--                    <td>
-                                            <a href="MainController?userID=<%= user.getUserID()%>&action=Delete&search=<%=search%>">Delete</a>
-                                        </td>-->
-                    <td>
-                        <!--<input type="submit" name="action" value="Update"/>-->
-                        <button class="btn btn-sm btn-primary" name="action" value="Update"><i class="fa fa-pencil"></i></button>
-                        <input type="hidden" name="userID" value="<%= user.getUserID()%>"/>
-                        <input type="hidden" name="search" value="<%= search%>"/>
-                        <input type="hidden" name="name" value="<%= user.getName()%>"/>
-                        <input type="hidden" name="roleID" value="<%= user.getRoleID()%>"/>
-                        <input type="hidden" name="address" value="<%= user.getAddress()%>"/>
-                        <input type="hidden" name="createDate" value="<%= user.getDate()%>"/>
-                    </td>
-                    <td>
-                        <button class="btn btn-sm btn-danger" name="action" value="Delete"><i class="fa fa-trash"></i></button>
-                        <input type="hidden" name="userID" value="<%= user.getUserID()%>"/>
-                        <input type="hidden" name="search" value="<%= search%>"/>
-                    </td>
                 </tr>
-
             </form>
-
-            <%
-                }
-            %>   
-
         </tbody>
     </table>
-    <%
-            }
-        }
-    %>
-    
 </body>
 </html>

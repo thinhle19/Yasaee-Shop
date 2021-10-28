@@ -20,7 +20,6 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpSession;
-import user.UserDTO;
 import utils.DBUtils;
 
 /**
