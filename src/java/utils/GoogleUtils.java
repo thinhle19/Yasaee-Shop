@@ -15,7 +15,7 @@ import user.GooglePojo;
 
 /**
  *
- * @author ASUS
+ * @author letie
  */
 public class GoogleUtils {
 

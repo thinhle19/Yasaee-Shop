@@ -7,7 +7,7 @@ package utils;
 
 /**
  *
- * @author ASUS
+ * @author letie
  */
 public class Constants {
 

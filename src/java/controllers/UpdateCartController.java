@@ -16,7 +16,7 @@ import shopping.Cart;
 
 /**
  *
- * @author ASUS
+ * @author letie
  */
 public class UpdateCartController extends HttpServlet {
 

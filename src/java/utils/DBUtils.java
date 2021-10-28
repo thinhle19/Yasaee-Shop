@@ -11,7 +11,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author ASUS
+ * @author letie
  */
 public class DBUtils {
 

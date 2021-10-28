@@ -7,7 +7,7 @@ package shopping;
 
 /**
  *
- * @author ASUS
+ * @author letie
  */
 public class Order {
     private String orderID;

@@ -17,7 +17,7 @@ import shopping.Books;
 
 /**
  *
- * @author ASUS
+ * @author letie
  */
 public class SearchBooksController extends HttpServlet {
 

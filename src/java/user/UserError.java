@@ -7,7 +7,7 @@ package user;
 
 /**
  *
- * @author ASUS
+ * @author letie
  */
 public class UserError {
 

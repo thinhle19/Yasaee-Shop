@@ -17,7 +17,7 @@ import shopping.BookDAO;
 
 /**
  *
- * @author ASUS
+ * @author letie
  */
 public class ShowBooksController extends HttpServlet {
 

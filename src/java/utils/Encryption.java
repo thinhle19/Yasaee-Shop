@@ -13,7 +13,7 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  *
- * @author ASUS
+ * @author letie
  */
 public class Encryption {
     public static String getMD5(String input) {

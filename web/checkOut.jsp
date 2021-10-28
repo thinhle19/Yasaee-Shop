@@ -1,7 +1,7 @@
 <%-- 
     Document   : checkOut
     Created on : Jun 23, 2021, 10:06:29 AM
-    Author     : ASUS
+    Author     : letie
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

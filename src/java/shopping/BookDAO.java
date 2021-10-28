@@ -24,7 +24,7 @@ import utils.DBUtils;
 
 /**
  *
- * @author ASUS
+ * @author letie
  */
 public class BookDAO {
 

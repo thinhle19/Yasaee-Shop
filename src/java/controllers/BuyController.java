@@ -22,7 +22,7 @@ import shopping.BookDAO;
 
 /**
  *
- * @author ASUS
+ * @author letie
  */
 public class BuyController extends HttpServlet {
 

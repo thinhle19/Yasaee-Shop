@@ -15,7 +15,7 @@ import shopping.Cart;
 
 /**
  *
- * @author ASUS
+ * @author letie
  */
 public class RemoveCartController extends HttpServlet {
 
