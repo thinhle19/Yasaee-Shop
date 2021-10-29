@@ -25,10 +25,6 @@
         <servlet-class>controllers.UpdateController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CreateController</servlet-name>
-        <servlet-class>controllers.CreateController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>ShowBooksController</servlet-name>
         <servlet-class>controllers.ShowBooksController</servlet-class>
     </servlet>
@@ -64,6 +60,10 @@
         <servlet-name>SearchBooksController</servlet-name>
         <servlet-class>controllers.SearchBooksController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SignUpController</servlet-name>
+        <servlet-class>controllers.SignUpController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -87,10 +87,6 @@
     <servlet-mapping>
         <servlet-name>UpdateController</servlet-name>
         <url-pattern>/UpdateController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CreateController</servlet-name>
-        <url-pattern>/CreateController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>ShowBooksController</servlet-name>
@@ -127,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>SearchBooksController</servlet-name>
         <url-pattern>/SearchBooksController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SignUpController</servlet-name>
+        <url-pattern>/SignUpController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

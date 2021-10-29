@@ -9,7 +9,7 @@ package user;
  *
  * @author letie
  */
-public class GooglePojo {
+public class GooglePOJO {
 
     private String id;
     private String email;
@@ -20,10 +20,10 @@ public class GooglePojo {
     private String link;
     private String picture;
 
-    public GooglePojo() {
+    public GooglePOJO() {
     }
 
-    public GooglePojo(String id, String email, boolean verified_email, String name, String given_name, String family_name, String link, String picture) {
+    public GooglePOJO(String id, String email, boolean verified_email, String name, String given_name, String family_name, String link, String picture) {
         this.id = id;
         this.email = email;
         this.verified_email = verified_email;

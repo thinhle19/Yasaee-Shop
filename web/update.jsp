@@ -1,9 +1,3 @@
- <%-- 
-    Document   : update
-    Created on : Jun 16, 2021, 7:08:12 PM
-    Author     : letie
---%>
-
 <%@page import="user.UserError"%>
 <%@page import="user.UserDTO"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

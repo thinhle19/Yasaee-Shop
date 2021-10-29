@@ -1,16 +1,10 @@
-<%-- 
-    Document   : createUser
-    Created on : Jun 17, 2021, 3:41:33 PM
-    Author     : letie
---%>
-
 <%@page import="user.UserError"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Create User Page</title>
+        <title>Yasaee - Sign Up</title>
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -18,7 +12,6 @@
     </head>
     <body>
         <style>
-
             .form-container{
                 padding: 30px;
                 border-radius: 10px;
@@ -37,75 +30,71 @@
                 justify-content: space-between;
                 align-items: center;
             }
-
+            .navbar-brand{
+                font-size: 30px;
+            }
         </style>
         <%
             UserError userError = (UserError) request.getAttribute("USER_ERROR");
             if (userError == null) {
-                userError = new UserError("", "", "", "", "", "");
+                userError = new UserError();
             }
         %>
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Library System</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="login.html">Home<span class="sr-only">(current)</span></a>
-                    </li>
-                </ul>
-            </div>
+        <!--//TODO, get the value after 1 time wrong input-->
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light justify-content-center">
+            <a class="navbar-brand justify-content-center" href="#">YASAEE</a>
         </nav>
-        <br><h1 align="center">Register Form </h1><br/>
+        <br><h1 align="center">Sign Up Form</h1><br/>
         <section class="container-fluid">
             <section class="row justify-content-center">
                 <section class="col-12 col-sm-6 col-md-3">
                     <form class="form-container" action="MainController" method="POST">
                         <!--User ID-->
                         <div class="form-group">
-                            <label for="InputUserID">User ID</label>
-                            <input type="text" name="userID"  class="form-control" id="InputUserID"  value="${param.userID}" aria-describedby="userIDHelp" placeholder="Enter User ID">
-                            <p style="color:red;"><%=userError.getUserIDError()%></p>
+                            <label>Username</label>
+                            <input type="text" name="username"  class="form-control" id="InputUserID"  value="${param.username}" aria-describedby="userIDHelp" placeholder="Enter Username">
+                            <p style="color:red;"><%=userError.getUsername()%></p>
                         </div>
                         <!--Full Name-->
                         <div class="form-group">
                             <label for="InputFullName">Full Name</label>
                             <input type="text" name="name"  class="form-control" id="InputFullName" value="${param.name}" placeholder="Enter Full Name" required="">
-                            <p style="color:red;"><%=userError.getNameError()%></p>
+                            <p style="color:red;"><%=userError.getName()%></p>
                         </div>
                         <!--Address-->
                         <div class="form-group">
                             <label for="InputAddress">Address</label>
-                            <input type="text" name="address"  class="form-control" value="${param.address}" id="InputAddress"aria-describedby="InputAddressHelp" placeholder="Enter Address" required="">
-                            <p style="color:red;"><%=userError.getAddressError()%></p>
+                            <input type="text" name="address"  class="form-control" value="${param.address}" id="InputAddress" aria-describedby="InputAddressHelp" placeholder="Enter Address" required="">
+                            <p style="color:red;"><%=userError.getAddress()%></p>
                         </div>
-                        <!--Role ID-->
-                        <div class="form-group role-group">
-                            <label class="label-role" for="InputRoleID">Role ID</label><br/>
-                            <select name="roleID" class="form-select" aria-label="Default select example" required>
-                                <option selected value="">Choose your role</option>
-                                <option value="AD">Administrator</option> 
-                                <option value="US">User</option>
-                            </select>
+                        <!--Email-->
+                        <div class="form-group">
+                            <label >Email</label>
+                            <input type="text" name="email"  class="form-control" value="${param.email}"  aria-describedby="InputAddressHelp" placeholder="Enter Address" required="">
+                            <p style="color:red;"><%=userError.getEmail()%></p>
+                        </div>
+                        <!--Phone number-->
+                        <div class="form-group">
+                            <label >Phone number</label>
+                            <input type="text" name="phone_num"  class="form-control" value="${param.phone_num}"  aria-describedby="InputAddressHelp" placeholder="Enter Address" required="">
+                            <p style="color:red;"><%=userError.getPhoneNum() %></p>
                         </div>
                         <!--Password-->
                         <div class="form-group">
                             <label for="InputPassword">Password</label>
                             <input type="password" name="password"  class="form-control" id="InputPassword" aria-describedby="InputPasswordHelp" placeholder="Enter Password " required="">
-                            <%=userError.getPasswordError()%>
+                            <%=userError.getPassword()%>
                         </div>
                         <div class="form-group">
                             <label for="InputConfirmPassword">Confirm Password</label>
                             <input type="password" name="confirm"  class="form-control" id="InputConfirmPassword" aria-describedby="InputConfirmPasswordHelp" placeholder="Confirm Password" required="">
-                          
-                            <p style="color:red;"><%=userError.getConfirmPasswordError()%></p>
+
+                            <p style="color:red;"><%=userError.getConfirmPassword()%></p>
                         </div>
                         <div class="submit-wrapper">
-                            <button type="submit" value="Create" name="action" class="btn btn-primary">Create</button>
+                            <button type="submit" value="SignUp" name="action" class="btn btn-primary">Create</button>
                             <div>
                                 <span style="margin-right: 10px">Already a User?</span>
                                 <a href="login.html"> Login Here </a>

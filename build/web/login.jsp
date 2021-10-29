@@ -1,9 +1,3 @@
-<%-- 
-    Document   : login
-    Created on : 29-Oct-2021, 02:37:26
-    Author     : letie
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -31,11 +25,11 @@
             align-items: center;
             margin-bottom: 20px;
         }
-        
+
         .text-center{
             padding: 5px;
         }
-        
+
         /*TODO:the icon is not in middle*/
         #google-icon{
             padding: 5px;
@@ -55,12 +49,12 @@
                             <label for="InputPassword1">Password</label>
                             <input type="password" name="password" value="" class="form-control" id="InputPassword1" placeholder="Enter password">
                         </div>
-                        <div class="text-center">
+                        <div class="text-center" style="color:red;">
                             ${requestScope.ERROR_LOGIN}
                         </div>
                         <div class="button-submit">
                             <button type="submit" value="Login" name="action" class="btn btn-primary">Submit</button>
-                            <a class="btn btn-secondary" href="createUser.jsp">Create new account</a>
+                            <a class="btn btn-info" href="sign-up.jsp">Create new account</a>
                         </div>
                         <div class="text-center">
                             <a  href="SearchBooksController">Shopping now</a>
@@ -70,7 +64,7 @@
                             <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8084/LibraryManagement/LoginGoogleController&response_type=code&client_id=982147591002-hukrhkpbe7hc8ts3s5gjerv3p4jfoohn.apps.googleusercontent.com&approval_prompt=force"
                                class="btn btn-lg btn-google btn-block text-uppercase btn-outline"/>
                             <img id="google-icon" src="https://img.icons8.com/color/16/000000/google-logo.png" 
-                                 alt="Google Icon" >Login With Google</a>
+                                 alt="Google Icon" height="30">Login With Google</a>
                         </div>
                     </form>
                 </section>

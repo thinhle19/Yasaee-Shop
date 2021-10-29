@@ -11,7 +11,7 @@ import org.apache.http.client.fluent.Form;
 import org.apache.http.client.fluent.Request;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import user.GooglePojo;
+import user.GooglePOJO;
 
 /**
  *
@@ -31,10 +31,10 @@ public class GoogleUtils {
         return accessToken;
     }
 
-    public static GooglePojo getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
+    public static GooglePOJO getUserInfo(final String accessToken) throws ClientProtocolException, IOException {
         String link = Constants.GOOGLE_LINK_GET_USER_INFO + accessToken;
         String response = Request.Get(link).execute().returnContent().asString();
-        GooglePojo googlePojo = new Gson().fromJson(response, GooglePojo.class);
+        GooglePOJO googlePojo = new Gson().fromJson(response, GooglePOJO.class);
         System.out.println(googlePojo);
         return googlePojo;
     }

@@ -11,72 +11,87 @@ package user;
  */
 public class UserError {
 
-    private String userIDError;
-    private String nameError;
-    private String roleIDError;
-    private String addressError;
-    private String passwordError;
-    private String confirmPasswordError;
+    private String username;
+    private String name;
+    private String password;
+    private String confirmPassword;
+    private String email;
+    private String address;
+    private String phoneNum;
 
     public UserError() {
+        this.username = "";
+        this.name = "";
+        this.password = "";
+        this.confirmPassword = "";
+        this.email = "";
+        this.address = "";
+        this.phoneNum = "";
     }
 
-    public UserError(String userIDError, String nameError, String roleIDError, String addressError, String passwordError, String confirmPasswordError) {
-        this.userIDError = userIDError;
-        this.nameError = nameError;
-        this.roleIDError = roleIDError;
-        this.addressError = addressError;
-        this.passwordError = passwordError;
-        this.confirmPasswordError = confirmPasswordError;
+    public UserError(String username, String name, String password, String confirmPassword, String email, String address, String phoneNum) {
+        this.username = username;
+        this.name = name;
+        this.password = password;
+        this.confirmPassword = confirmPassword;
+        this.email = email;
+        this.address = address;
+        this.phoneNum = phoneNum;
     }
 
-    public String getUserIDError() {
-        return userIDError;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUserIDError(String userIDError) {
-        this.userIDError = userIDError;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
-    public String getNameError() {
-        return nameError;
+    public String getName() {
+        return name;
     }
 
-    public void setNameError(String nameError) {
-        this.nameError = nameError;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getRoleIDError() {
-        return roleIDError;
+    public String getPassword() {
+        return password;
     }
 
-    public void setRoleIDError(String roleIDError) {
-        this.roleIDError = roleIDError;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getAddressError() {
-        return addressError;
+    public String getConfirmPassword() {
+        return confirmPassword;
     }
 
-    public void setAddressError(String addressError) {
-        this.addressError = addressError;
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
-    public String getPasswordError() {
-        return passwordError;
+    public String getEmail() {
+        return email;
     }
 
-    public void setPasswordError(String passwordError) {
-        this.passwordError = passwordError;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getConfirmPasswordError() {
-        return confirmPasswordError;
+    public String getAddress() {
+        return address;
     }
 
-    public void setConfirmPasswordError(String confirmPasswordError) {
-        this.confirmPasswordError = confirmPasswordError;
+    public void setAddress(String address) {
+        this.address = address;
     }
-    
-    
+
+    public String getPhoneNum() {
+        return phoneNum;
+    }
+
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNum = phoneNum;
+    }
 }

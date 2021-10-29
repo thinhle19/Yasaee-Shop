@@ -1,9 +1,3 @@
-<%-- 
-    Document   : admin
-    Created on : Jun 15, 2021, 8:04:00 PM
-    Author     : letie
---%>
-
 <%@page import="user.User"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="java.util.List"%>

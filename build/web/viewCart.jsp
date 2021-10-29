@@ -1,9 +1,3 @@
-<%-- 
-    Document   : viewCart
-    Created on : Jun 21, 2021, 10:35:16 AM
-    Author     : letie
---%>
-
 <%@page import="user.UserDTO"%>
 <%@page import="shopping.Books"%>
 <%@page import="shopping.Cart"%>

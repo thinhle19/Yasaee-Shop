@@ -1,9 +1,3 @@
-<%-- 
-    Document   : error
-    Created on : Jun 16, 2021, 10:14:41 AM
-    Author     : letie
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
