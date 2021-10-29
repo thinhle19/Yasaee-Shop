@@ -57,7 +57,7 @@
                             <a class="btn btn-info" href="sign-up.jsp">Create new account</a>
                         </div>
                         <div class="text-center">
-                            <a  href="ViewAllProductController">Shopping now</a>
+                            <a  href="shopping.jsp">Shopping now</a>
                         </div>
                         <!--Login Google-->
                         <div >

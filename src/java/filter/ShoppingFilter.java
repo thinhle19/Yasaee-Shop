@@ -16,6 +16,8 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -48,7 +50,12 @@ public class ShoppingFilter implements Filter {
             FilterChain chain)
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
-        req.getRequestDispatcher("ViewAllProductController").forward(request, response);
+        HttpSession session = req.getSession();
+        if (request.getAttribute("LoadedAll") == null || false == (boolean) request.getAttribute("LoadedAll")) {
+            req.getRequestDispatcher("ViewAllProductController").forward(request, response);
+        } else {
+            chain.doFilter(request, response);
+        }
     }
 
     public FilterConfig getFilterConfig() {

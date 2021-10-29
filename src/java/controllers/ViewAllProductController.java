@@ -27,15 +27,16 @@ public class ViewAllProductController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        boolean loadedAll = false;
+        HttpSession session = request.getSession();
         try {
             List<Product> prodList = ProductDAO.getAllProducts();
-            HttpSession session = request.getSession();
             session.setAttribute("LIST_PRODUCT", prodList);
-
+            loadedAll = true;
         } catch (SQLException ex) {
             Logger.getLogger(ViewAllProductController.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
+            request.setAttribute("LoadedAll", loadedAll);
             request.getRequestDispatcher("shopping.jsp").forward(request, response);
         }
     }

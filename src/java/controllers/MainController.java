@@ -25,7 +25,6 @@ public class MainController extends HttpServlet {
     private static final String UPDATE_PAGE = "update.jsp";
     private static final String CONFIRM_UPDATE = "UpdateController";
     private static final String SIGN_UP = "SignUpController";
-    private static final String SHOW_BOOK_LIST = "ShowBooksController";
     private static final String ADD_TO_CART = "AddToCartController";
     private static final String VIEW_CART = "viewCart.jsp";
     private static final String UPDATE_CART = "UpdateCartController";
@@ -59,9 +58,6 @@ public class MainController extends HttpServlet {
                         break;
                     case "Confirm Update":
                         url = CONFIRM_UPDATE;
-                        break;
-                    case "Show Book List":
-                        url = SHOW_BOOK_LIST;
                         break;
                     case "SignUp":
                         url = SIGN_UP;

@@ -13,48 +13,48 @@ import java.util.Map;
  * @author letie
  */
 public class Cart {
-    private Map<String,Books> cart;
+
+    private Map<String, Product> cart;
 
     public Cart() {
     }
 
-    public Cart(Map<String, Books> cart) {
+    public Cart(Map<String, Product> cart) {
         this.cart = cart;
     }
 
-    public Map<String, Books> getCart() {
+    public Map<String, Product> getCart() {
         return cart;
     }
 
-    public void setCart(Map<String, Books> cart) {
+    public void setCart(Map<String, Product> cart) {
         this.cart = cart;
     }
-    
-    public void add(Books book){
-        if(this.cart==null){
+
+    public void add(Product prod) {
+        if (this.cart == null) {
             this.cart = new HashMap<>();
         }
-        if(this.cart.containsKey(book.getBookId())){
-            int currentQuantity = this.cart.get(book.getBookId()).getQuantity();
-            book.setQuantity(currentQuantity+book.getQuantity());
+        if (this.cart.containsKey(prod.getId())) {
+            int currentQuantity = this.cart.get(prod.getId()).getQuantity();
+            prod.setQuantity(currentQuantity + prod.getQuantity());
         }
-        cart.put(book.getBookId(), book);
+        cart.put(prod.getId(), prod);
     }
-    
-    
-    public void delete(String id){
-        if(this.cart==null){
+
+    public void delete(String id) {
+        if (this.cart == null) {
             return;
         }
-        if(this.cart.containsKey(id)){
+        if (this.cart.containsKey(id)) {
             this.cart.remove(id);
         }
     }
-    
-    public void update (String id , Books newBook){
-        if(this.cart==null){
+
+    public void update(String id, Product newBook) {
+        if (this.cart == null) {
             return;
-        }else{
+        } else {
             this.cart.replace(id, newBook);
         }
     }

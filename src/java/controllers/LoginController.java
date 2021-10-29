@@ -52,7 +52,6 @@ public class LoginController extends HttpServlet {
                     break;
                 case "CU":
                     url = USER_PAGE;
-                    request.setAttribute("action", "ViewAllProduct");
                     break;
                 default:
                     request.setAttribute("ERROR_LOGIN", "Your role is not support");

@@ -11,9 +11,7 @@
 //import javax.servlet.http.HttpServletRequest;
 //import javax.servlet.http.HttpServletResponse;
 //import javax.servlet.http.HttpSession;
-//import shopping.Books;
 //import shopping.Cart;
-//import user.UserDTO;
 //
 ///**
 // *
@@ -21,7 +19,7 @@
 // */
 //public class AddToCartController extends HttpServlet {
 //
-//    private static final String SUCCESS = "ShowBooksController";
+//    private static final String SUCCESS = "ViewAllProductController";
 //    private static final String ERROR = "error.jsp";
 //    private static final String LOGOUT = "LogoutController";
 //
