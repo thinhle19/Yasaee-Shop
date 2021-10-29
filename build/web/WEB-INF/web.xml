@@ -64,6 +64,10 @@
         <servlet-name>SignUpController</servlet-name>
         <servlet-class>controllers.SignUpController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewAllProductController</servlet-name>
+        <servlet-class>controllers.ViewAllProductController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -127,6 +131,10 @@
     <servlet-mapping>
         <servlet-name>SignUpController</servlet-name>
         <url-pattern>/SignUpController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewAllProductController</servlet-name>
+        <url-pattern>/ViewAllProductController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

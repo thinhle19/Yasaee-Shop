@@ -7,6 +7,7 @@ package controllers;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -14,51 +15,29 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import user.User;
-import user.UserDAO;
-//import utils.Encryption;
+import shopping.Product;
+import shopping.ProductDAO;
 
 /**
  *
  * @author letie
  */
-public class LoginController extends HttpServlet {
+public class ViewAllProductController extends HttpServlet {
 
-    private static final String ERROR = "login.jsp";
-    public static final String ADMIN_PAGE = "admin.jsp";
-    public static final String USER_PAGE = "ViewAllProductController";
-//TODO: use the encryption
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        String url = ERROR;
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-        User loginUser = null;
+
         try {
-            loginUser = UserDAO.checkLogin(username, password);
-        } catch (SQLException ex) {
-            Logger.getLogger(LoginController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        if (loginUser == null) {
-            request.setAttribute("ERROR_LOGIN", "Incorrect Username or Password!");
-        } else {
+            List<Product> prodList = ProductDAO.getAllProducts();
             HttpSession session = request.getSession();
-            session.setAttribute("CURRENT_USER", loginUser);
-            String roleID = loginUser.getRoleId();
-            switch (roleID) {
-                case "AD":
-                    url = ADMIN_PAGE;
-                    break;
-                case "CU":
-                    url = USER_PAGE;
-                    request.setAttribute("action", "ViewAllProduct");
-                    break;
-                default:
-                    request.setAttribute("ERROR_LOGIN", "Your role is not support");
-            }
+            session.setAttribute("LIST_PRODUCT", prodList);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ViewAllProductController.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            request.getRequestDispatcher("shopping.jsp").forward(request, response);
         }
-        request.getRequestDispatcher(url).forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

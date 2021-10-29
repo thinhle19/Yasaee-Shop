@@ -18,8 +18,8 @@ import javax.servlet.http.HttpSession;
  */
 public class LogoutController extends HttpServlet {
 
-    private static final String ERROR = "login.html";
-    private static final String SUCCESS = "login.html";
+    private static final String ERROR = "login.jsp";
+    private static final String SUCCESS = "login.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -28,7 +28,7 @@ public class LogoutController extends HttpServlet {
         try {
             HttpSession session = request.getSession(false);
             if (session != null) {
-                session.invalidate();  //remove att
+                session.invalidate();  
                 url = SUCCESS;
             }
         } catch (Exception e) {
