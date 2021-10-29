@@ -19,6 +19,7 @@
             margin: 0 auto;
             box-shadow: 0 2px 12px 0 rgb(105 106 105);
             margin-top: 50px;
+            border-radius: 20px;
         }
         img{
             border: 1px solid #ddd;
@@ -59,6 +60,9 @@
                         </ul>
                     </div>
                     <form action="MainController" align="right">
+                        <button type="submit" name="action" value="View Cart" class="btn btn-info">
+                            <span class="glyphicon glyphicon-log-out"></span> View Cart
+                        </button>
                         <button type="submit" name="action" value="Logout" class="btn btn-danger">
                             <span class="glyphicon glyphicon-log-out"></span> Log out
                         </button>
@@ -129,7 +133,6 @@
                             <th scope="col">Price</th>
                             <th scope="col">Quantity in Stock</th>
                             <th scope="col">Buy quantity</th>
-                            <th scope="col">View Cart</th>
                             <th scope="col">Add to Cart</th>
                         </tr>
                     </thead>
@@ -144,16 +147,12 @@
                             <td><%=prod.getCategoryId()%></td>
                             <td><img src="<%=prod.getImage_url()%>"></td>
                             <td><%=prod.getName()%></td>
-                            <td><%=prod.getPrice()%></td>
+                            <td><%=String.format("%.0f",prod.getPrice())%></td>
                             <td><%=prod.getQuantity()%></td>
                             <td>
                                 <input  name="orderQuantity" type="number" value="1" min="1" max="<%=prod.getQuantity()%>" /></td>
                             </td>
 
-                            <td> 
-                                <button class="btn btn-sm btn-danger" name="action" value="View Cart"><i class="fa fa-eye"></i></button>
-
-                            </td>
                             <td> 
                                 <button class="btn btn-sm btn-success" name="action" value="Add to Cart"><i class="fa fa-shopping-cart"></i> </button>
                                 <input type="hidden" name="id" value="<%= prod.getId()%>"/>
