@@ -1,7 +1,7 @@
 
+<%@page import="utils.EncodingURL"%>
 <%@page import="shopping.Product"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page import="shopping.Books"%>
 <%@page import="java.util.List"%>
 <%@page import="user.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -111,9 +111,6 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="action" value="SearchBook">Search</button>
                 </form>
             </div>
-            <!--            <form action="MainController">
-                            <input type="submit" name="action" value="Show Book List">
-                        </form>-->
             <h1 style="color:green;">${requestScope.BUY_MESSAGE}</h1>
             <h1 style="color:green;">${requestScope.SHOPPING_MESSAGE}</h1>
             <%
@@ -147,7 +144,7 @@
                             <td><%=prod.getCategoryId()%></td>
                             <td><img src="<%=prod.getImage_url()%>"></td>
                             <td><%=prod.getName()%></td>
-                            <td><%=String.format("%.0f",prod.getPrice())%></td>
+                            <td><%=String.format("%.0f", prod.getPrice())%></td>
                             <td><%=prod.getQuantity()%></td>
                             <td>
                                 <input  name="orderQuantity" type="number" value="1" min="1" max="<%=prod.getQuantity()%>" /></td>
@@ -157,9 +154,8 @@
                                 <button class="btn btn-sm btn-success" name="action" value="Add to Cart"><i class="fa fa-shopping-cart"></i> </button>
                                 <input type="hidden" name="id" value="<%= prod.getId()%>"/>
                                 <input type="hidden" name="name" value="<%= prod.getName()%>"/>
-                                <input type="hidden" name="quantity" value="<%= prod.getQuantity()%>"/>
                                 <input type="hidden" name="price" value="<%=prod.getPrice()%>"/>
-                                <input type="hidden" name="image_url" value="<%= prod.getImage_url()%>"/>
+                                <input type="hidden" name="image_url" value="<%=prod.getImage_url()%>"/>
                             </td>
                         </tr>
                     </form>
@@ -175,12 +171,7 @@
                 }
             }
         %>
-        <%
-            String message = (String) request.getAttribute("SHOPPING_MESSAGE");
-            if (message == null) {
-                message = "";
-            }
-        %>
+        
 
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
