@@ -20,19 +20,19 @@ import shopping.Cart;
 public class RemoveCartController extends HttpServlet {
 
     private static final String ERROR = "error.jsp";
-    private static final String SUCCESS = "viewCart.jsp";
+    private static final String SUCCESS = "view-cart.jsp";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         String url = ERROR;
         try {
-
-            String bookID = request.getParameter("bookID");
+            String id = request.getParameter("id");
             HttpSession session = request.getSession();
             Cart cart = (Cart) session.getAttribute("CART");
             if (cart != null) {
-                cart.delete(bookID);
+                cart.delete(id);
+                cart.setCart(cart.getCart());
                 session.setAttribute("CART", cart);
                 url = SUCCESS;
             }

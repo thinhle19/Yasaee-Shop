@@ -43,6 +43,7 @@ public class UpdateCartController extends HttpServlet {
                 }
             }
             cart.update(id, product);
+            cart.setCart(cart.getCart());
             session.setAttribute("CART", cart);
             url = SUCCESS;
 
