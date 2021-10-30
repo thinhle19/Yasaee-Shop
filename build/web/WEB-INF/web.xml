@@ -86,6 +86,10 @@
         <servlet-name>ViewAllProductController</servlet-name>
         <servlet-class>controllers.ViewAllProductController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchProductController</servlet-name>
+        <servlet-class>controllers.SearchProductController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>MainController</servlet-name>
         <url-pattern>/MainController</url-pattern>
@@ -153,6 +157,10 @@
     <servlet-mapping>
         <servlet-name>ViewAllProductController</servlet-name>
         <url-pattern>/ViewAllProductController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchProductController</servlet-name>
+        <url-pattern>/SearchProductController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

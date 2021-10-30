@@ -31,7 +31,7 @@ public class MainController extends HttpServlet {
     private static final String REMOVE_CART = "RemoveCartController";
     private static final String CHECKOUT_CART = "checkOut.jsp";
     private static final String BUY_CART = "BuyController";
-    private static final String SEARCH_BOOK = "SearchBooksController";
+    private static final String SEARCH_PRODUCT = "SearchProductController";
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -68,8 +68,8 @@ public class MainController extends HttpServlet {
                     case "View Cart":
                         url = VIEW_CART;
                         break;
-                    case "SearchBook":
-                        url = SEARCH_BOOK;
+                    case "SearchProduct":
+                        url = SEARCH_PRODUCT;
                         break;
                     case "Modify":
                         url = UPDATE_CART;

@@ -1,13 +1,13 @@
+<%@page import="shopping.Product"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page import="shopping.Cart"%>
-<%@page import="shopping.Books"%>
-<%@page import="user.UserDTO"%>
+<%@page import="user.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Check Out Page</title>
+        <title>Yasaee - Checkout</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <style>
@@ -31,7 +31,7 @@
     </style>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Library System</a>
+            <a class="navbar-brand" href="#">Yasaee</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -51,13 +51,6 @@
         </nav>
         <div class="container">
             <%
-                UserDTO user = (UserDTO) session.getAttribute("LOGIN_USER");
-                if (user == null || !"US".equals(user.getRoleID())) {
-                    response.sendRedirect("login.html");
-                    return;
-                }
-            %>
-            <%
                 Cart cart = (Cart) session.getAttribute("CART");
             %>
             <h1 align="center">Check Out</h1>
@@ -66,12 +59,10 @@
                     <thead>
                         <tr>
                             <th scope="col">No</th>
-                            <th scope="col">Book ID</th>
                             <th scope="col"></th>
                             <th scope="col">Name</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Quantity</th>
                             <th scope="col">Price</th>
+                            <th scope="col">Quantity</th>
                             <th scope="col">Total</th>
                         </tr>
                     </thead>
@@ -79,21 +70,20 @@
                         <%
                             int count = 1;
                             double total = 0;
-                            for (Books book : cart.getCart().values()) {
-                                total += book.getQuantity() * book.getPrice();
+                            for (Product prod : cart.getCart().values()) {
+                                total += prod.getQuantity() * prod.getPrice();
                         %>
                     <form action="MainController">
                         <tr>
                             <th scope="row"><%=count++%></th>
-                            <td><%=book.getBookId()%></td>
-                            <td><img src="<%=book.getImage()%>"></td>
-                            <td><%=book.getBookName()%></td>
-                            <td><%=book.getDescription()%></td>
+                            <td><img src="<%=prod.getImage_url()%>"></td>
+                            <td><%=prod.getName()%></td>
+                            <td><%=prod.getPrice()%></td>
+                            <td><%= prod.getPrice()%></td>
                             <td>                        
-                                <input type="number" name="quanity" value="<%= book.getQuantity()%>"/>
+                                <input type="number" name="buyQuantity" value="<%= prod.getQuantity()%>"/>
                             </td>
-                            <td><%= book.getPrice()%></td>
-                            <td><%= book.getQuantity() * book.getPrice()%></td>
+                            <td><%= prod.getQuantity() * prod.getPrice()%></td>
                         </tr>
                     </form>
                     <%
@@ -109,7 +99,7 @@
                     <button type="submit" name="action" value="Buy" class="btn btn-primary">
                         <span class="glyphicon glyphicon-log-out"></span> Buy
                     </button>
-                    <input type="hidden" name="userID" value="<%=user.getUserID()%>"/>
+                    <input type="hidden" name="username" value="${sessionScope.CURRENT_USER.getUsername()}"/>
                     <input type="hidden" name="total" value="<%=total%>"/>
                 </form>
             </div>

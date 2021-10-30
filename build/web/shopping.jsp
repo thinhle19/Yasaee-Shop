@@ -38,9 +38,9 @@
                     response.sendRedirect("admin.jsp");
                 }
             }
-            String searchBook = (String) request.getParameter("searchBook");
-            if (searchBook == null) {
-                searchBook = "";
+            String searchProd = (String) request.getParameter("searchProd");
+            if (searchProd == null) {
+                searchProd = "";
             }
         %>
         <c:choose>
@@ -98,8 +98,8 @@
         <div class="container" >
             <div>
                 <form  action="MainController">
-                    <input  type="text" placeholder="Search"  name="searchBook" value="<%=searchBook%>">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="action" value="SearchBook">Search</button>
+                    <input  type="text" placeholder="Search"  name="searchProd" value="<%=searchProd%>">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="action" value="SearchProduct">Search</button>
                 </form>
             </div>
             <h1 style="color:green;">${requestScope.BUY_MESSAGE}</h1>

@@ -42,6 +42,7 @@ public class AuthenFilter implements Filter {
         customerResources.add("shopping.jsp");
         customerResources.add("ViewAllProductController");
         customerResources.add("view-cart.jsp");
+        customerResources.add("check-out.jsp");
 
         adminResources = new ArrayList<>();
         adminResources.add("");

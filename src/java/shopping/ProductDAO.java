@@ -11,6 +11,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import utils.DBUtils;
 
 /**
@@ -60,5 +62,20 @@ public class ProductDAO {
             }
         }
         return prodList;
+    }
+
+    public static List<Product> searchProducts(String searchStr) {
+        List<Product> list = new ArrayList<>();
+        try {
+            list = getAllProducts();
+            for (int i = 0; i < list.size(); i++) {
+                if (!list.get(i).getName().contains(searchStr)) {
+                    list.remove(i);
+                }
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } 
+        return list;
     }
 }
