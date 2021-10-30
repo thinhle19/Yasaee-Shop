@@ -41,6 +41,7 @@ public class AuthenFilter implements Filter {
         customerResources.add("LoginController");
         customerResources.add("shopping.jsp");
         customerResources.add("ViewAllProductController");
+        customerResources.add("view-cart.jsp");
 
         adminResources = new ArrayList<>();
         adminResources.add("");
@@ -72,7 +73,7 @@ public class AuthenFilter implements Filter {
         String uri = req.getRequestURI();
 
         if (uri.contains("login.jsp") || uri.contains("sign-up.jsp")
-                || uri.contains("shopping.jsp") || uri.contains("MainController")) {
+                || uri.contains("MainController")) {
             chain.doFilter(request, response);
         } else {
             String resource = getResourceString(uri);

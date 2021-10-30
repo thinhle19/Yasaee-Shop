@@ -56,9 +56,6 @@
                             <button type="submit" value="Login" name="action" class="btn btn-primary">Submit</button>
                             <a class="btn btn-info" href="sign-up.jsp">Create new account</a>
                         </div>
-                        <div class="text-center">
-                            <a  href="shopping.jsp">Shopping now</a>
-                        </div>
                         <!--Login Google-->
                         <div >
                             <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8084/LibraryManagement/LoginGoogleController&response_type=code&client_id=982147591002-hukrhkpbe7hc8ts3s5gjerv3p4jfoohn.apps.googleusercontent.com&approval_prompt=force"
