@@ -5,13 +5,12 @@
         <group>
             <file>file:/D:/Programming/%23Java/Projects/Yasaee_Shop/web/view-cart.jsp</file>
             <file>file:/D:/Programming/%23Java/Projects/Yasaee_Shop/web/shopping.jsp</file>
-            <file>file:/D:/Programming/%23Java/Projects/Yasaee_Shop/src/java/shopping/Cart.java</file>
-            <file>file:/D:/Programming/%23Java/Projects/Yasaee_Shop/src/java/controllers/UpdateCartController.java</file>
+            <file>file:/D:/Programming/%23Java/Projects/Yasaee_Shop/src/java/controllers/ViewAllProductController.java</file>
             <file>file:/D:/Programming/%23Java/Projects/Yasaee_Shop/src/java/controllers/RemoveCartController.java</file>
             <file>file:/D:/Programming/%23Java/Projects/Yasaee_Shop/src/java/controllers/MainController.java</file>
-            <file>file:/D:/Programming/%23Java/Projects/Yasaee_Shop/web/login.jsp</file>
-            <file>file:/D:/Programming/%23Java/Projects/Yasaee_Shop/web/error.jsp</file>
-            <file>file:/D:/Programming/%23Java/Projects/Yasaee_Shop/src/java/filter/AuthenFilter.java</file>
+            <file>file:/D:/Programming/%23Java/Projects/Yasaee_Shop/src/java/controllers/BuyController.java</file>
+            <file>file:/D:/Programming/%23Java/Projects/Yasaee_Shop/src/java/shopping/ProductDAO.java</file>
+            <file>file:/D:/Programming/%23Java/Projects/Yasaee_Shop/src/java/controllers/AddToCartController.java</file>
             <file>file:/D:/Programming/%23Java/Projects/Yasaee_Shop/web/check-out.jsp</file>
         </group>
     </open-files>

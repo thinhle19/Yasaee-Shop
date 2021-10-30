@@ -20,10 +20,6 @@ public class MainController extends HttpServlet {
     private static final String ERROR = "error.jsp";
     private static final String LOGIN = "LoginController";
     private static final String LOGOUT = "LogoutController";
-    private static final String SEARCH = "SearchController";
-    private static final String DELETE = "DeleteController";
-    private static final String UPDATE_PAGE = "update.jsp";
-    private static final String CONFIRM_UPDATE = "UpdateController";
     private static final String SIGN_UP = "SignUpController";
     private static final String ADD_TO_CART = "AddToCartController";
     private static final String VIEW_CART = "view-cart.jsp";
@@ -44,20 +40,8 @@ public class MainController extends HttpServlet {
                     case "Login":
                         url = LOGIN;
                         break;
-                    case "Search":
-                        url = SEARCH;
-                        break;
                     case "Logout":
                         url = LOGOUT;
-                        break;
-                    case "Delete":
-                        url = DELETE;
-                        break;
-                    case "Update":
-                        url = UPDATE_PAGE;
-                        break;
-                    case "Confirm Update":
-                        url = CONFIRM_UPDATE;
                         break;
                     case "SignUp":
                         url = SIGN_UP;

@@ -6,7 +6,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Admin Page</title>
+        <title>Yasaee - Admin</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -17,7 +17,7 @@
     </head>
     <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light"  >
-            <a class="navbar-brand" href="#">Library System</a>
+            <a class="navbar-brand" href="#">Yasaee</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -35,35 +35,13 @@
                 </form>
             </div>
         </nav>
-        <br><h2 class="font-italic">Hello Administrator: Test%></h2>
+        <br/>
+        <h2 class="font-italic">Hello Administrator: ${sessionScope.CURRENT_USER.getName()}</h2>
         <form action="MainController">
             <button type="submit" name="action" value="Logout" class="btn btn-danger">
                 <span class="glyphicon glyphicon-log-out"></span> Log out
             </button>
         </form>
-        <br>
-        <h1 align="center"> Error</h1>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">No</th>
-                    <th scope="col">User ID</th>
-                    <th scope="col">Full Name</th>
-                    <th scope="col">Role ID</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">Password</th>
-                    <th scope="col">Create Date</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Update</th>
-                    <th scope="col">Delete</th>
-                </tr>
-            </thead>
-            <tbody>
-            <form action="MainController">
-                <tr>
-                </tr>
-            </form>
-        </tbody>
-    </table>
-</body>
+        <br/br>
+    </body>
 </html>

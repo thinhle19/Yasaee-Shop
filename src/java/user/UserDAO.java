@@ -9,11 +9,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import javax.naming.NamingException;
 import utils.DBUtils;
 
 /**
@@ -128,74 +123,4 @@ public class UserDAO {
 
         return check;
     }
-
-//    public boolean insertUserGoogle(GooglePojo user) throws SQLException {
-//        boolean check = false;
-//        Connection conn = null;
-//        PreparedStatement stm = null;
-//        Date now = new Date();
-//        SimpleDateFormat dt = new SimpleDateFormat("MM/dd/YYYY");
-//        try {
-//            conn = DBUtils.getConnection();
-//            if (conn != null) {
-//                String sql = "INSERT INTO tblUsers(name,userID,roleID,address,password,status,createDate) "
-//                        + "VALUES (?,?,?,?,?,?,?) ";
-//                stm = conn.prepareStatement(sql);
-//                stm.setString(1, user.getEmail());
-//                stm.setString(2, user.getId());
-//                stm.setString(3, "US");
-//                stm.setString(4, "");
-//                stm.setString(5, "");
-//                stm.setString(6, "active");
-//                stm.setString(7, dt.format(now));
-//                check = stm.executeUpdate() > 0;
-//            }
-//        } catch (Exception e) {
-//            e.toString();
-//        } finally {
-//            if (stm != null) {
-//                stm.close();
-//            }
-//            if (conn != null) {
-//                conn.close();
-//            }
-//        }
-//        return check;
-//    }
-//    public UserDTO checkLoginGoogle(String userID) throws SQLException {
-//        UserDTO user = null;
-//        Connection conn = null;
-//        PreparedStatement stm = null;
-//        ResultSet rs = null;
-//        try {
-//            conn = DBUtils.getConnection();
-//            if (conn != null) {
-//                String sql = "SELECT roleID ,name,createDate"
-//                        + " FROM tblUsers "
-//                        + " WHERE userID =? AND status= 'active' ";
-//                stm = conn.prepareStatement(sql);
-//                stm.setString(1, userID);
-//                rs = stm.executeQuery();
-//                if (rs.next()) {
-//                    String name = rs.getString("name");
-//                    String roleID = rs.getString("roleID");
-//                    user = new UserDTO(userID, name, "", roleID, "", "", "");
-//                }
-//            }
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        } finally {
-//            if (rs != null) {
-//                rs.close();
-//            }
-//            if (stm != null) {
-//                stm.close();
-//            }
-//            if (conn != null) {
-//                conn.close();
-//            }
-//        }
-//
-//        return user;
-//    }
 }

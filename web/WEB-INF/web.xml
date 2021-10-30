@@ -31,22 +31,6 @@
         <servlet-class>controllers.LogoutController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>SearchController</servlet-name>
-        <servlet-class>controllers.SearchController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>DeleteController</servlet-name>
-        <servlet-class>controllers.DeleteController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>UpdateController</servlet-name>
-        <servlet-class>controllers.UpdateController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>ShowBooksController</servlet-name>
-        <servlet-class>controllers.ShowBooksController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>AddToCartController</servlet-name>
         <servlet-class>controllers.AddToCartController</servlet-class>
     </servlet>
@@ -59,24 +43,8 @@
         <servlet-class>controllers.RemoveCartController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>CheckOutController</servlet-name>
-        <servlet-class>controllers.BuyController</servlet-class>
-    </servlet>
-    <servlet>
         <servlet-name>BuyController</servlet-name>
         <servlet-class>controllers.BuyController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>CheckLoginController</servlet-name>
-        <servlet-class>controllers.CheckLoginController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>LoginGoogleController</servlet-name>
-        <servlet-class>controllers.LoginGoogleController</servlet-class>
-    </servlet>
-    <servlet>
-        <servlet-name>SearchBooksController</servlet-name>
-        <servlet-class>controllers.SearchBooksController</servlet-class>
     </servlet>
     <servlet>
         <servlet-name>SignUpController</servlet-name>
@@ -103,22 +71,6 @@
         <url-pattern>/LogoutController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>SearchController</servlet-name>
-        <url-pattern>/SearchController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>DeleteController</servlet-name>
-        <url-pattern>/DeleteController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>UpdateController</servlet-name>
-        <url-pattern>/UpdateController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>ShowBooksController</servlet-name>
-        <url-pattern>/ShowBooksController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>AddToCartController</servlet-name>
         <url-pattern>/AddToCartController</url-pattern>
     </servlet-mapping>
@@ -131,24 +83,8 @@
         <url-pattern>/RemoveCartController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>CheckOutController</servlet-name>
-        <url-pattern>/CheckOutController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
         <servlet-name>BuyController</servlet-name>
         <url-pattern>/BuyController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>CheckLoginController</servlet-name>
-        <url-pattern>/CheckLoginController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>LoginGoogleController</servlet-name>
-        <url-pattern>/LoginGoogleController</url-pattern>
-    </servlet-mapping>
-    <servlet-mapping>
-        <servlet-name>SearchBooksController</servlet-name>
-        <url-pattern>/SearchBooksController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
         <servlet-name>SignUpController</servlet-name>

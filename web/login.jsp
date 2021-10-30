@@ -58,7 +58,7 @@
                         </div>
                         <!--Login Google-->
                         <div >
-                            <a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8084/LibraryManagement/LoginGoogleController&response_type=code&client_id=982147591002-hukrhkpbe7hc8ts3s5gjerv3p4jfoohn.apps.googleusercontent.com&approval_prompt=force"
+                            <a href="error.jsp"
                                class="btn btn-lg btn-google btn-block text-uppercase btn-outline"/>
                             <img id="google-icon" src="https://img.icons8.com/color/16/000000/google-logo.png" 
                                  alt="Google Icon" height="30">Login With Google</a>
