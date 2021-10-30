@@ -51,11 +51,11 @@ public class Cart {
         }
     }
 
-    public void update(String id, Product newBook) {
+    public void update(String id, Product newProd) {
         if (this.cart == null) {
             return;
         } else {
-            this.cart.replace(id, newBook);
+            this.cart.replace(id, newProd);
         }
     }
 }

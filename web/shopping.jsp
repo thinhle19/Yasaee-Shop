@@ -93,7 +93,7 @@
             </c:otherwise>
         </c:choose>
 
-        <h1 class="hello-user"> Hello User:  ${sessionScope.CURRENT_USER.name}</h1>
+        <h1 class="hello-user"> Welcome back, ${sessionScope.CURRENT_USER.name}</h1>
         <br/>
         <div class="container" >
             <div>

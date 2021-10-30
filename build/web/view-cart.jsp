@@ -94,7 +94,7 @@
                             <td><%=String.format("%.0f", prod.getPrice())%></td>
                             <td>                        
                                 <!--This is buying quantity not stock-->
-                                <input type="number" name="quanity" value="<%= prod.getQuantity()%>" min="1"/>
+                                <input type="number" name="newQuantity" value="<%= prod.getQuantity()%>" min="1"/>
                             </td>
                             <td><%=String.format("%.0f", prod.getQuantity() * prod.getPrice())%></td>
                             <td>
