@@ -64,6 +64,34 @@ public class ProductDAO {
         return prodList;
     }
 
+    public static boolean updateQty(String id, int buyQty, int oldQty) throws SQLException {
+        Connection conn = null;
+        PreparedStatement ps = null;
+        boolean check = false;
+        try {
+            conn = DBUtils.getConnection();
+            String sql = " UPDATE product "
+                    + " SET quantity = ?"
+                    + " WHERE id= ?";
+            ps = conn.prepareStatement(sql);
+            ps.setString(1, String.valueOf(oldQty - buyQty));
+            ps.setString(2, id);
+            check = ps.executeUpdate() > 0;
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (ps != null) {
+                ps.close();
+            }
+            if (conn != null) {
+                conn.close();
+            }
+        }
+        return check;
+    }
+
     public static List<Product> searchProducts(String searchStr) {
         List<Product> list = new ArrayList<>();
         Connection conn = null;

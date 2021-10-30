@@ -29,7 +29,7 @@ public class MainController extends HttpServlet {
     private static final String VIEW_CART = "view-cart.jsp";
     private static final String UPDATE_CART = "UpdateCartController";
     private static final String REMOVE_CART = "RemoveCartController";
-    private static final String CHECKOUT_CART = "checkOut.jsp";
+    private static final String CHECKOUT_CART = "check-out.jsp";
     private static final String BUY_CART = "BuyController";
     private static final String SEARCH_PRODUCT = "SearchProductController";
 

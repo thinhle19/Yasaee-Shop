@@ -44,6 +44,9 @@
                 </ul>
             </div>
             <form action="MainController" align="right">
+                <button type="submit" name="action" value="View Cart" class="btn btn-info">
+                    <span class="glyphicon glyphicon-log-out"></span> View Cart
+                </button>
                 <button type="submit" name="action" value="Logout" class="btn btn-danger">
                     <span class="glyphicon glyphicon-log-out"></span> Log out
                 </button>
@@ -79,10 +82,8 @@
                             <td><img src="<%=prod.getImage_url()%>"></td>
                             <td><%=prod.getName()%></td>
                             <td><%=prod.getPrice()%></td>
-                            <td><%= prod.getPrice()%></td>
-                            <td>                        
-                                <input type="number" name="buyQuantity" value="<%= prod.getQuantity()%>"/>
-                            </td>
+                            <td><%= prod.getQuantity()%></td>
+                            <td><%= prod.getQuantity()%></td>
                             <td><%= prod.getQuantity() * prod.getPrice()%></td>
                         </tr>
                     </form>
@@ -93,9 +94,8 @@
                 </table>
             </div>
             <div class="submit-wapper">
-                <h1>Total:<%=total%></h1>
+                <h1>Total: <%=total%></h1>
                 <form action="MainController" align="right">
-                    Input your email <input type="text" name="userEmail" required="">
                     <button type="submit" name="action" value="Buy" class="btn btn-primary">
                         <span class="glyphicon glyphicon-log-out"></span> Buy
                     </button>
