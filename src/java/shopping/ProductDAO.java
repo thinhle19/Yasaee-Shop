@@ -66,16 +66,32 @@ public class ProductDAO {
 
     public static List<Product> searchProducts(String searchStr) {
         List<Product> list = new ArrayList<>();
+        Connection conn = null;
+        PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
-            list = getAllProducts();
-            for (int i = 0; i < list.size(); i++) {
-                if (!list.get(i).getName().contains(searchStr)) {
-                    list.remove(i);
+            conn = DBUtils.getConnection();
+            if (conn != null) {
+                String sql = "SELECT * "
+                        + " FROM product"
+                        + " WHERE name LIKE ?";
+                ps = conn.prepareCall(sql);
+                ps.setString(1, "%" + searchStr + "%");
+                rs = ps.executeQuery();
+                while (rs.next()) {
+                    String id = rs.getString("id");
+                    String name = rs.getString("name");
+                    String imageUrl = rs.getString("image_url");
+                    double price = rs.getDouble("price");
+                    int quantity = rs.getInt("quantity");
+                    list.add(new Product(id, "", name, imageUrl, price, quantity));
                 }
             }
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(ProductDAO.class.getName()).log(Level.SEVERE, null, ex);
-        } 
+        }
         return list;
     }
 }
